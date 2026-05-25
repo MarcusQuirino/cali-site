@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../content/site.ts';
+---
+
+<Layout title={`Contact — ${site.writer.name}`}>
+  <main class="page">
+    <a href="/" class="back-link" aria-label="Back to home">← Back</a>
+    <header class="page-header">
+      <h1 transition:name="page-title">Contact</h1>
+      <p class="lede">
+        Reach out for commissions, collaborations, or just to say hello.
+      </p>
+    </header>
+
+    <section class="contact-methods">
+      <h2>Where to find me</h2>
+      <dl>
+        <div>
+          <dt>Email</dt>
+          <dd>
+            <a href="mailto:hello@example.com">hello@example.com</a>
+          </dd>
+        </div>
+        <div>
+          <dt>Queue status</dt>
+          <dd>
+            <a
+              href={site.queueUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Trello board ↗
+            </a>
+          </dd>
+        </div>
+        {
+          site.socials.map((s) => (
+            <div>
+              <dt>{s.name}</dt>
+              <dd>
+                <a href={s.href}>{s.handle}</a>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="contact-note">
+      <h2>Before you write</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Include a
+        brief summary of what you'd like written, any deadlines, and your
+        preferred tier from the
+        <a href="/samples-pricing">pricing page</a>.
+      </p>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="Portrait placeholder for Wraithwen">
+  <rect width="320" height="320" fill="#84DCC6"/>
+  <g fill="#4B4E6D">
+    <path d="M160 230c-58 0-104 30-104 70v20h208v-20c0-40-46-70-104-70z"/>
+    <circle cx="160" cy="140" r="60"/>
+  </g>
+  <g fill="#222222" opacity="0.18">
+    <circle cx="160" cy="140" r="60"/>
+  </g>
+  <rect x="0" y="0" width="320" height="320" fill="none" stroke="#222222" stroke-width="6"/>
+</svg>

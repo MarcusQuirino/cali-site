@@ -1,17 +1,53 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import { site } from '../content/site.ts';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title={`${site.writer.name} — Commissions`}>
+  <main class="home">
+    <header class="hero">
+      <img
+        src={site.writer.photo}
+        alt={`Portrait of ${site.writer.name}`}
+        class="portrait"
+        width="320"
+        height="320"
+      />
+      <h1 class="name" transition:name="writer-name">{site.writer.name}</h1>
+      <p class="tagline">{site.writer.tagline}</p>
+    </header>
+
+    <nav class="primary-nav" aria-label="Primary">
+      {
+        site.nav.map((item) => (
+          <a class="nav-button" href={item.href}>
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        class="nav-button nav-button--external"
+        href={site.queueUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Queue
+        <span aria-hidden="true" class="external-icon">↗</span>
+      </a>
+    </nav>
+
+    <footer class="socials" aria-label="Social links">
+      <ul>
+        {
+          site.socials.map((s) => (
+            <li>
+              <a href={s.href} aria-label={`${s.name} — ${s.handle}`}>
+                {s.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </footer>
+  </main>
+</Layout>

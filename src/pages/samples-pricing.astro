@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../content/site.ts';
+---
+
+<Layout title={`Samples & Pricing — ${site.writer.name}`}>
+  <main class="page">
+    <a href="/" class="back-link" aria-label="Back to home">← Back</a>
+    <header class="page-header">
+      <h1 transition:name="page-title">Samples &amp; Pricing</h1>
+      <p class="lede">
+        A small selection of recent commissioned work, paired with the rates
+        I'm currently accepting.
+      </p>
+    </header>
+
+    <section class="samples" aria-labelledby="samples-heading">
+      <h2 id="samples-heading">Samples</h2>
+      <article class="sample">
+        <h3>The Heron's Ledger</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </article>
+      <article class="sample">
+        <h3>Saltwater Letters</h3>
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </article>
+      <article class="sample">
+        <h3>A Slow Hour</h3>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur.
+        </p>
+      </article>
+    </section>
+
+    <section class="pricing" aria-labelledby="pricing-heading">
+      <h2 id="pricing-heading">Pricing</h2>
+      <ul class="tiers">
+        <li class="tier">
+          <h3>Flash</h3>
+          <p class="price">$40</p>
+          <p>Under 1,000 words. One round of revisions. Five-day delivery.</p>
+        </li>
+        <li class="tier">
+          <h3>Short</h3>
+          <p class="price">$120</p>
+          <p>1,000–4,000 words. Two rounds. Two-week delivery.</p>
+        </li>
+        <li class="tier">
+          <h3>Long</h3>
+          <p class="price">$300+</p>
+          <p>4,000+ words. Three rounds. Timeline scoped per project.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+</Layout>

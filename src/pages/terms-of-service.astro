@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../content/site.ts';
+---
+
+<Layout title={`Terms of Service — ${site.writer.name}`}>
+  <main class="page">
+    <a href="/" class="back-link" aria-label="Back to home">← Back</a>
+    <header class="page-header">
+      <h1 transition:name="page-title">Terms of Service</h1>
+      <p class="lede">
+        Please read these terms carefully before commissioning work. By
+        placing an order you agree to the following.
+      </p>
+    </header>
+
+    <section>
+      <h2>1. Scope</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Payment</h2>
+      <p>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+        non proident, sunt in culpa qui officia deserunt mollit anim.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Revisions</h2>
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+        ab illo inventore veritatis.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Refunds &amp; Cancellation</h2>
+      <p>
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+        fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+        sequi nesciunt.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Rights &amp; Credit</h2>
+      <p>
+        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+        consectetur, adipisci velit, sed quia non numquam eius modi tempora.
+      </p>
+    </section>
+  </main>
+</Layout>
