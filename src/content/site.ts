@@ -1,6 +1,6 @@
 export const site = {
   writer: {
-    name: 'Wraithwen',
+    name: 'Everayy',
     tagline: 'Commissioned fiction, written to order.',
     photo: '/wraithwen.svg',
   },
@@ -12,8 +12,8 @@ export const site = {
     { label: 'Contact', href: '/contact' },
   ],
   socials: [
-    { name: 'X', href: '#', handle: '@wraithwen' },
-    { name: 'Tumblr', href: '#', handle: 'wraithwen' },
-    { name: 'AO3', href: '#', handle: 'Wraithwen' },
+    { name: 'X', href: '#', handle: '@everayy' },
+    { name: 'Tumblr', href: '#', handle: 'everayy' },
+    { name: 'AO3', href: '#', handle: 'Everayy' },
   ],
 } as const;
