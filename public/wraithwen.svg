@@ -1,11 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="Portrait placeholder for Wraithwen">
+  <!-- Background -->
   <rect width="320" height="320" fill="#84DCC6"/>
-  <g fill="#4B4E6D">
+
+  <!-- Hatching for raw texture -->
+  <g stroke="#222222" stroke-width="2" opacity="0.18">
+    <line x1="-20" y1="40"  x2="340" y2="40"/>
+    <line x1="-20" y1="80"  x2="340" y2="80"/>
+    <line x1="-20" y1="120" x2="340" y2="120"/>
+    <line x1="-20" y1="160" x2="340" y2="160"/>
+    <line x1="-20" y1="200" x2="340" y2="200"/>
+    <line x1="-20" y1="240" x2="340" y2="240"/>
+    <line x1="-20" y1="280" x2="340" y2="280"/>
+  </g>
+
+  <!-- Hard offset shadow under head/shoulders -->
+  <g transform="translate(8 8)" fill="#222222">
     <path d="M160 230c-58 0-104 30-104 70v20h208v-20c0-40-46-70-104-70z"/>
-    <circle cx="160" cy="140" r="60"/>
+    <circle cx="160" cy="138" r="62"/>
   </g>
-  <g fill="#222222" opacity="0.18">
-    <circle cx="160" cy="140" r="60"/>
-  </g>
-  <rect x="0" y="0" width="320" height="320" fill="none" stroke="#222222" stroke-width="6"/>
+
+  <!-- Shoulders / cloak -->
+  <path d="M160 230c-58 0-104 30-104 70v20h208v-20c0-40-46-70-104-70z" fill="#4B4E6D" stroke="#222222" stroke-width="6"/>
+
+  <!-- Hood/Hair silhouette -->
+  <path d="M98 150c0-44 28-80 62-80s62 36 62 80v6c0 8-6 14-14 14h-96c-8 0-14-6-14-14z" fill="#222222"/>
+
+  <!-- Face -->
+  <circle cx="160" cy="138" r="56" fill="#95A3B3" stroke="#222222" stroke-width="6"/>
+
+  <!-- Eyes — slits -->
+  <rect x="132" y="138" width="22" height="6" fill="#222222"/>
+  <rect x="166" y="138" width="22" height="6" fill="#222222"/>
+
+  <!-- Cheek mark -->
+  <rect x="186" y="156" width="12" height="3" fill="#222222"/>
+
+  <!-- Mouth — flat line -->
+  <rect x="146" y="172" width="28" height="4" fill="#222222"/>
+
+  <!-- Collar accent -->
+  <rect x="118" y="248" width="84" height="10" fill="#84DCC6" stroke="#222222" stroke-width="4"/>
+
+  <!-- Outer hard border -->
+  <rect x="3" y="3" width="314" height="314" fill="none" stroke="#222222" stroke-width="6"/>
 </svg>
