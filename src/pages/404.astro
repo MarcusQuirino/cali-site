@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../content/site.ts';
+---
+
+<Layout
+  title={`Page Not Found — ${site.writer.name}`}
+  description="The page you were looking for doesn't exist. Head back to Everayy's commissions home."
+>
+  <main class="page">
+    <a href="/" class="back-link" aria-label="Back to home">← Back</a>
+
+    <header class="page-header">
+      <p class="four-oh-four" aria-hidden="true">404</p>
+      <h1 transition:name="page-title">Lost in the margins.</h1>
+      <p class="lede">
+        That page doesn't exist — or it's wandered off. Try one of these
+        instead.
+      </p>
+    </header>
+
+    <nav class="not-found-nav" aria-label="Recovery">
+      <a href="/" class="nav-button">Home</a>
+      <a href="/samples-pricing" class="nav-button">Samples &amp; Pricing</a>
+      <a href="/contact" class="nav-button">Contact</a>
+    </nav>
+  </main>
+</Layout>
+
+<style>
+  .four-oh-four {
+    font-family: Impact, 'Arial Black', sans-serif;
+    font-size: clamp(96px, 28vw, 240px);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    margin: 0 0 12px;
+    color: var(--ink);
+    -webkit-text-stroke: 2px var(--ink);
+    text-shadow: 8px 8px 0 var(--mint);
+  }
+
+  .not-found-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: clamp(28px, 5vh, 48px);
+  }
+
+  @media (min-width: 640px) {
+    .not-found-nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .not-found-nav .nav-button {
+      flex: 1 1 200px;
+    }
+  }
+</style>
