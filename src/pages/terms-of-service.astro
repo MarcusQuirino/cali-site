@@ -3,7 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import { site } from '../content/site.ts';
 ---
 
-<Layout title={`Terms of Service — ${site.writer.name}`}>
+<Layout
+  title={`Terms of Service — ${site.writer.name}`}
+  description="Terms covering scope, payment, revisions, refunds, and rights for fiction commissions from Everayy."
+>
   <main class="page">
     <a href="/" class="back-link" aria-label="Back to home">← Back</a>
     <header class="page-header">

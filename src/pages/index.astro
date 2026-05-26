@@ -3,7 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import { site } from '../content/site.ts';
 ---
 
-<Layout title={`${site.writer.name} — Commissions`}>
+<Layout
+  title={`${site.writer.name} — Commissioned Fiction`}
+  description="Commissioned fiction by Everayy — browse samples, current rates, and the live commission queue."
+>
   <main class="home">
     <header class="hero">
       <img

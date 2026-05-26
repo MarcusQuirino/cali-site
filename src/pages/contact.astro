@@ -3,7 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import { site } from '../content/site.ts';
 ---
 
-<Layout title={`Contact — ${site.writer.name}`}>
+<Layout
+  title={`Contact — ${site.writer.name}`}
+  description="Reach Everayy for fiction commissions, collaborations, or general inquiries."
+>
   <main class="page">
     <a href="/" class="back-link" aria-label="Back to home">← Back</a>
     <header class="page-header">

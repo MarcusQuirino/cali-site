@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+.vercel
+
+# Claude Code / agent harness state
+.agents/
+.claude/
+skills-lock.json

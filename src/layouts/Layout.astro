@@ -1,15 +1,33 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import { site as siteContent } from '../content/site.ts';
 
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
   title,
-  description = 'Commissioned fiction by Everayy.',
+  description = 'Commissioned fiction by Everayy — short stories and long-form prose, written to order.',
+  ogImage = '/og.svg',
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteContent.writer.name,
+  url: Astro.site?.href,
+  image: new URL(siteContent.writer.photo, Astro.site).href,
+  description: siteContent.writer.tagline,
+  sameAs: siteContent.socials.map((s) => s.href).filter((h) => h !== '#'),
+  jobTitle: 'Writer',
+  knowsAbout: ['Fiction', 'Commissioned writing'],
+};
 ---
 
 <!doctype html>
@@ -17,14 +35,39 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
     <meta name="theme-color" content="#84DCC6" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>{title}</title>
+    <link rel="alternate" type="application/xml" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteContent.writer.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
     <ClientRouter />
   </head>
   <body>
     <slot />
+    <script>
+      import { inject } from '@vercel/analytics';
+      inject();
+    </script>
   </body>
 </html>
 
