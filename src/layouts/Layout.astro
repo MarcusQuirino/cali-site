@@ -64,6 +64,7 @@ const personSchema = {
   </head>
   <body>
     <slot />
+    <footer class="site-footer">made with 💙 by Marcus</footer>
     <script>
       import { inject } from '@vercel/analytics';
       inject();
@@ -574,5 +575,19 @@ const personSchema = {
     ::view-transition-new(*) {
       animation: none !important;
     }
+  }
+
+  /* ---------- Site footer ---------- */
+  .site-footer {
+    border-top: 4px solid var(--ink);
+    padding: 18px 16px;
+    margin-top: clamp(48px, 8vh, 96px);
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--ink);
+    background: var(--paper);
   }
 </style>
