@@ -1,6 +1,8 @@
 ---
+import { getImage } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 import { site as siteContent } from '../content/site.ts';
+import portraitSrc from '../assets/pfp.jpeg';
 
 interface Props {
   title: string;
@@ -17,14 +19,23 @@ const {
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImageUrl = new URL(ogImage, Astro.site).href;
 
+const portrait = await getImage({
+  src: portraitSrc,
+  width: 300,
+  height: 300,
+  format: 'webp',
+  quality: 85,
+  densities: [1, 2],
+});
+
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: siteContent.writer.name,
   url: Astro.site?.href,
-  image: new URL(siteContent.writer.photo, Astro.site).href,
+  image: new URL(portrait.src, Astro.site).href,
   description: siteContent.writer.tagline,
-  sameAs: siteContent.socials.map((s) => s.href).filter((h) => h !== '#'),
+  sameAs: siteContent.socials.map((s) => s.href),
   jobTitle: 'Writer',
   knowsAbout: ['Fiction', 'Commissioned writing'],
 };
@@ -43,7 +54,15 @@ const personSchema = {
 
     <meta name="theme-color" content="#84DCC6" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" as="image" href={siteContent.writer.photo} type="image/svg+xml" fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      href={portrait.src}
+      imagesrcset={portrait.srcSet.attribute}
+      imagesizes="min(260px, 70vw)"
+      type="image/webp"
+      fetchpriority="high"
+    />
     <link rel="alternate" type="application/xml" href="/sitemap-index.xml" />
 
     <meta property="og:type" content="website" />
@@ -194,17 +213,34 @@ const personSchema = {
     padding-top: 1rem;
   }
 
-  .portrait {
-    width: min(260px, 70vw);
-    height: auto;
-    aspect-ratio: 1 / 1;
+  /* Polaroid frame */
+  .polaroid {
+    display: inline-block;
+    background: var(--paper);
+    padding: 10px 10px 48px;
     border: var(--border-w) solid var(--ink);
-    background: var(--mint);
     box-shadow: var(--shadow-lg);
     transform: rotate(-2deg);
     transition: transform var(--press), box-shadow var(--press);
+    line-height: 0; /* collapse gap below <img> */
   }
-  .portrait:hover { transform: rotate(-1deg) translate(-2px, -2px); }
+  .polaroid:hover {
+    transform: rotate(-1deg) translate(-3px, -3px);
+    box-shadow: var(--shadow-xl);
+  }
+  .polaroid:active {
+    transform: rotate(-2deg) translate(3px, 3px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Photo inside the polaroid — pure image, no extra chrome */
+  .portrait {
+    width: min(230px, 62vw);
+    height: min(230px, 62vw);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
 
   .name {
     font-size: clamp(3rem, 14vw, 5.25rem);
@@ -454,11 +490,21 @@ const personSchema = {
     border: var(--border-w) solid var(--ink);
     box-shadow: var(--shadow-sm);
     padding: 1rem 1.1rem;
+    transition: transform var(--press), box-shadow var(--press);
   }
-  .tier:nth-child(2) { background: var(--paper); }
-  .tier:nth-child(3) { background: var(--navy); color: var(--paper); }
+  .tier:nth-child(1) { transform: rotate(-1.2deg); }
+  .tier:nth-child(2) { background: var(--paper); transform: rotate(0.8deg); }
+  .tier:nth-child(3) { background: var(--navy); color: var(--paper); transform: rotate(-0.6deg); }
   .tier:nth-child(3) h3 { color: var(--paper); }
   .tier:nth-child(3) .price { background: var(--paper); color: var(--ink); }
+  .tier:hover {
+    transform: rotate(0deg) translate(-3px, -3px);
+    box-shadow: var(--shadow-md);
+  }
+  .tier:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--ink);
+  }
   .tier h3 {
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
@@ -539,7 +585,7 @@ const personSchema = {
     .hero { grid-area: hero; }
     .primary-nav { grid-area: nav; }
     .socials { grid-area: socials; }
-    .portrait { width: 300px; }
+    .portrait { width: 270px; height: 270px; }
     .name { font-size: 4.5rem; }
   }
 
@@ -564,19 +610,27 @@ const personSchema = {
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-    .portrait,
+    .polaroid,
     .name,
     .tagline,
     .nav-button,
-    .page h2 {
+    .page h2,
+    .tier,
+    .tier:nth-child(1),
+    .tier:nth-child(2),
+    .tier:nth-child(3) {
       transform: none !important;
     }
+    .polaroid:hover,
+    .polaroid:active,
     .nav-button:hover,
     .nav-button:active,
     .socials a:hover,
     .socials a:active,
     .back-link:hover,
-    .back-link:active {
+    .back-link:active,
+    .tier:hover,
+    .tier:active {
       transform: none !important;
     }
     ::view-transition-old(*),

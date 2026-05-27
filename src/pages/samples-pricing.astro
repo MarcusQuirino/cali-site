@@ -12,33 +12,83 @@ import { site } from '../content/site.ts';
     <header class="page-header">
       <h1 transition:name="page-title">Samples &amp; Pricing</h1>
       <p class="lede">
-        A small selection of recent commissioned work, paired with the rates
-        I'm currently accepting.
+        A small selection of recent works paired with the rates I'm currently
+        accepting. I charge $2 per 100 words, though prices may vary according
+        to content.
       </p>
     </header>
 
     <section class="samples" aria-labelledby="samples-heading">
       <h2 id="samples-heading">Samples</h2>
+
       <article class="sample">
-        <h3>The Heron's Ledger</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <header class="sample-header">
+          <h3>Frostbite</h3>
+          <span class="word-count">3.2k words</span>
+        </header>
+        <blockquote class="excerpt">
+          "No mother deserves to watch her children die," she had overheard a
+          guard mentioning once, though she had not seen his face nor the coat
+          of arms he bore in his chest. <em>Am I still a mother if I have no
+          children left to me?</em> Catelyn wondered. <em>Is an apple tree
+          still a tree after it's been carved out?</em>
+        </blockquote>
+        <a
+          href="https://archiveofourown.org/works/72301406/chapters/188249491"
+          class="sample-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read on AO3 ↗
+        </a>
       </article>
+
       <article class="sample">
-        <h3>Saltwater Letters</h3>
-        <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
-        </p>
+        <header class="sample-header">
+          <h3>There Is Love That Doesn't Have a Place to Rest</h3>
+          <span class="word-count">5.6k words</span>
+        </header>
+        <blockquote class="excerpt">
+          The sky was dark and ugly the day Balon Greyjoy was brought before
+          the King to either lose his head or his pride. Thick, dark clouds
+          hung above, and men firmed their feet on the wet stony ground to
+          face the wind that blew from the sea. Eddard Stark, Lord of
+          Winterfell, Warden of the North, looked at the water and saw his
+          reflection staring back. "It won't rain, 'tis just damn ironborn
+          weather," he heard someone behind him mumble, while far away, a
+          lone thunder boomed.
+        </blockquote>
+        <a
+          href="https://archiveofourown.org/works/85409191"
+          class="sample-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read on AO3 ↗
+        </a>
       </article>
+
       <article class="sample">
-        <h3>A Slow Hour</h3>
-        <p>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur.
-        </p>
+        <header class="sample-header">
+          <h3>I Wasn't Born to Stoop, to Scorn, and Knuckle Under</h3>
+          <span class="word-count">260 words</span>
+        </header>
+        <blockquote class="excerpt">
+          "I… I had no other choice."<br /><br />
+          "Then tell me, girl," the darkin roars the word like a curse, and
+          Xolaani can no longer hide the disgust brewing underneath it—the
+          resentment, the envy that screams Xolaani herself has been a monster
+          for far longer than she ever was a girl. "What choice is there for
+          the starving when you place before them a plate of meat?"
+        </blockquote>
+        <a
+          href="https://archiveofourown.org/works/83832781"
+          class="sample-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read on AO3 ↗
+        </a>
       </article>
     </section>
 
@@ -47,20 +97,138 @@ import { site } from '../content/site.ts';
       <ul class="tiers">
         <li class="tier">
           <h3>Flash</h3>
-          <p class="price">$40</p>
-          <p>Under 1,000 words. One round of revisions. Five-day delivery.</p>
+          <p class="price">$2 – $30</p>
+          <p class="tier-range">100 to 1,500 words</p>
+          <p>Between drabbles and short one-shots.</p>
         </li>
         <li class="tier">
-          <h3>Short</h3>
-          <p class="price">$120</p>
-          <p>1,000–4,000 words. Two rounds. Two-week delivery.</p>
+          <h3>Medium</h3>
+          <p class="price">$32 – $70</p>
+          <p class="tier-range">1,600 to 3,500 words</p>
+          <p>Stories with room to breathe.</p>
         </li>
         <li class="tier">
           <h3>Long</h3>
-          <p class="price">$300+</p>
-          <p>4,000+ words. Three rounds. Timeline scoped per project.</p>
+          <p class="price">$72 – $110</p>
+          <p class="tier-range">3,600 to 5,500 words</p>
+          <p>The full slow burn, up to 5.5k.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="add-ons" aria-labelledby="addons-heading">
+      <h2 id="addons-heading">Add-Ons</h2>
+      <ul class="addon-list">
+        <li class="addon">
+          <span class="addon-name">Erotica</span>
+          <span class="addon-price">+$10</span>
+        </li>
+        <li class="addon">
+          <span class="addon-name">Original Work</span>
+          <span class="addon-price">+$10</span>
         </li>
       </ul>
     </section>
   </main>
 </Layout>
+
+<style>
+  /* Sample enhancements */
+  .sample-header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .sample-header h3 {
+    margin: 0;
+  }
+  .word-count {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: var(--mint);
+    border: 2px solid var(--ink);
+    padding: 0.2rem 0.5rem;
+    box-shadow: 2px 2px 0 var(--ink);
+    white-space: nowrap;
+  }
+  .excerpt {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    border-left: 4px solid var(--ink);
+    margin: 0 0 0.85rem 0;
+    padding: 0.5rem 0 0.5rem 1rem;
+    color: var(--navy);
+    font-style: italic;
+  }
+  .sample-link {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--mint);
+    transition: background var(--press);
+  }
+  .sample-link:hover {
+    background: var(--mint);
+  }
+
+  /* Pricing tier extras */
+  .tier-range {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Add-ons section */
+  .add-ons {
+    background: var(--paper);
+    border: var(--border-w) solid var(--ink);
+    box-shadow: var(--shadow-md);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .addon-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .addon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--mint);
+    border: var(--border-w) solid var(--ink);
+    box-shadow: var(--shadow-sm);
+    padding: 0.6rem 1rem;
+  }
+  .addon-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .addon-price {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    background: var(--ink);
+    color: var(--mint);
+    padding: 0.15rem 0.45rem;
+    border: 2px solid var(--ink);
+  }
+</style>
