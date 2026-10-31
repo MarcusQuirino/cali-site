@@ -1,43 +1,51 @@
-# Astro Starter Kit: Minimal
+# Everayy Commissions
 
-```sh
-bun create astro@latest -- --template minimal
-```
+Commissions site for Everayy, a writer offering commissioned fiction written to order.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+**Live:** https://everayy.com
 
-## 🚀 Project Structure
+## Features
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Home:** writer intro, navigation, social links, and a link to the live commission queue (a Trello board).
+- **Samples & Pricing:** writing samples, word-count pricing tiers, and add-ons.
+- **Terms of Service:** scope, payment, revisions, refunds and cancellation, and rights and credit.
+- **Contact:** links to Twitter, Tumblr, AO3, Ko-fi, Straw.page, and email.
+- Custom 404 page.
+- Neobrutalist, poster-style design in plain CSS (no UI framework), with view transitions between pages via Astro's `ClientRouter`.
+- **Performance and SEO:** stylesheets inlined to avoid render-blocking CSS, preloaded LCP portrait, Open Graph image, canonical URLs, JSON-LD Person schema, and a generated sitemap.
+- Vercel Web Analytics.
+
+## Tech stack
+
+- [Astro 6](https://astro.build) (static site)
+- `@astrojs/sitemap`
+- `@vercel/analytics`
+- Bun for package management; Node >= 22.12 (`.nvmrc` pins 22.14.0)
+- GitHub Actions CI
+
+## Project structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── pages/           # index, samples-pricing, terms-of-service, contact, 404
+├── layouts/         # Shared layout: head/SEO tags, global styles, analytics
+├── content/site.ts  # Writer info, nav, socials, and queue URL in one place
+└── assets/          # Portrait image
+public/              # Favicon, OG image, robots.txt
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Most shared copy and links are edited in `src/content/site.ts`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Local development
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+bun install          # install dependencies
+bun run dev          # start the dev server (http://localhost:4321)
+bun run build        # production build to ./dist/
+bun run preview      # preview the production build
+bunx astro check     # typecheck
+```
 
-## 🧞 Commands
+## CI and deployment
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+GitHub Actions (`.github/workflows/ci.yml`) runs `astro check` and a production build on every push and pull request to `main`/`master`. The site is hosted on Vercel at [everayy.com](https://everayy.com).
